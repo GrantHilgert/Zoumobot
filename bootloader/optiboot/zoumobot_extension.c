@@ -22,3 +22,40 @@ IR1 PCINT 7
 #define DIP1 PE3
 #define IR0 PE0
 #define IR1 PE7
+
+//Setup
+void zoumobot_setup(void){
+  //temporarily disabled all Interupts so we can saftly modify them
+  cli():
+  //Pin Change Interrupt Enable 0
+  //Enabled PCINT0 through PCINT7
+  EIMSK |= 0b00010000;
+  //Mask so that PCINT6 & PCINT7 are the only two interupts enabled.
+  PCMSK0 |= 0b11000000;
+  
+}
+
+void zoumobot_enable(void){
+  //Reenable all interupts
+  sei();
+}
+void zoumobot_check_mode(void){
+  
+}
+
+//Post match or Emergency Stop
+void zoumobot_shutdown(void){
+  //Clear PWM Timers
+  
+  //Set leds
+  
+  while(true);
+}
+
+ISR(PCINT0_vect){
+  //Insert code to 
+  
+  
+  //Shutdowns the zoumobot
+  zoumobot_shutdown();
+}
