@@ -16,6 +16,7 @@ IR0 PCINT 6
 IR1 PCINT 7
 
 */
+#include <avr/interrupt.h>
 
 #define DIP0 PE2
 #define DIP1 PE3
