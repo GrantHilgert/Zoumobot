@@ -27,7 +27,10 @@ IR1 PCINT 7
 void zoumobot_setup(void){
   //temporarily disabled all Interupts so we can saftly modify them
   cli():
-  //Pin Change Interrupt Enable 0
+  //Sets DIP0, DIP1, IR0 and IR1 as inputs, leaves SDA,SCL,RX,TX alone
+  DDRE &= 0b00110011;
+  //Sets up built in LED's as outputs
+  DDRA |= 0b11110000;
   //Enabled PCINT0 through PCINT7
   EIMSK |= 0b00010000;
   //Mask so that PCINT6 & PCINT7 are the only two interupts enabled.
@@ -39,7 +42,20 @@ void zoumobot_enable(void){
   //Reenable all interupts
   sei();
 }
-void zoumobot_check_mode(void){
+void zoumobot_set_mode(void){
+  
+  //----Competition Mode----
+  //Set Development led off
+  PORTA &= 0b11011111;
+  //Set Competition led on
+  PORTA |= 0b00010000;
+  
+  
+  //----Development Mode----
+  //Competition led off
+  PORTA &= 0b11101111;
+  //Development LED on
+  PORTA |= 0b00100000
   
 }
 
@@ -52,6 +68,7 @@ void zoumobot_shutdown(void){
   while(true);
 }
 
+//Interrupt Routine 
 ISR(PCINT0_vect){
   //Insert code to 
   
