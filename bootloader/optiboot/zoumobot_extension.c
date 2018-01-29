@@ -8,7 +8,7 @@ In development mode, the device behaves like a normal arduinio, allowing code to
 In compention mode, code can still be uplaoded over the serial port. However, the correct IR signal must be received 
 before execution is allowed to begin
 
-
+Using guide at https://thewanderingengineer.com/2014/08/11/arduino-pin-change-interrupts/
 */
 
 #define DIP0 0
