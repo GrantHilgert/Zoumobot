@@ -434,8 +434,10 @@ int main(void) {
   //  r1 contains zero
   //
   // If not, uncomment the following instructions:
-  // cli();
-  asm volatile ("clr __zero_reg__");
+  cli();
+  
+	
+asm volatile ("clr __zero_reg__");
 #if defined(__AVR_ATmega8__) || defined (__AVR_ATmega32__)
   SP=RAMEND;  // This is done by hardware reset
 #endif
