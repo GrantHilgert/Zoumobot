@@ -9,9 +9,15 @@ In compention mode, code can still be uplaoded over the serial port. However, th
 before execution is allowed to begin
 
 Using guide at https://thewanderingengineer.com/2014/08/11/arduino-pin-change-interrupts/
+DIP0 PCINT 2
+DIP1 PCINT 3
+
+IR0 PCINT 6
+IR1 PCINT 7
+
 */
 
-#define DIP0 0
-#define DIP1 0
-#define IR0 0
-#define IR1 0
+#define DIP0 PE2
+#define DIP1 PE3
+#define IR0 PE0
+#define IR1 PE7
