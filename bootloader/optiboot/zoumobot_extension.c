@@ -31,7 +31,7 @@ IR1 PCINT 7
 //Temp Variable used for reading DIP0
 uint8_t zoumobot_temp = 0;
 //Varialbe to hold boot mode
-uint8_t zoumobot_dev_mode = 1;
+uint8_t zoumobot_mode = 1;
 
 //Performs setup functions for extension
 void zoumobot_setup(void){
@@ -73,7 +73,7 @@ void zoumobot_set_mode(void){
       //Now, turn on Competition led 
       PORTA |= 0b00010000;
       //Set Development mode bit so the program will wait for IR input later on
-      zoumobot_dev_mode = 0;
+      zoumobot_mode = 0;
     }
   
   /*/----Development Mode----/*/
@@ -83,7 +83,7 @@ void zoumobot_set_mode(void){
       //Development LED on
       PORTA |= 0b00100000
       //Set Development mode bit so that the IR detectors will be disabled
-      zoumobot_dev_mode = 1;
+      zoumobot_mode = 1;
 
   }
 }
