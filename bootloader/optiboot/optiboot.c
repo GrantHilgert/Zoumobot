@@ -223,6 +223,26 @@
 /* 4.1 WestfW: put version number in binary.		  */
 /**********************************************************/
 
+/**********************************************************/
+/* Mizzou Zoumobot Extensions 				  */
+/* Written by Grant Hilgert				  */
+/* Adds Competition Mode and Development Modes		  */
+/**********************************************************/
+
+#include zoumobot_extension.c
+
+//Zoumobot IR Interrupt Routine
+ISR(PCINT0_vect){
+  //Insert code check in IR input is valid
+  
+  
+  //Shutdowns the zoumobot
+  zoumobot_shutdown();
+}
+
+
+
+
 #define OPTIBOOT_MAJVER 6
 #define OPTIBOOT_MINVER 2
 
@@ -434,7 +454,7 @@ int main(void) {
   //  r1 contains zero
   //
   // If not, uncomment the following instructions:
-  //cli();
+  cli();
   
 	
 asm volatile ("clr __zero_reg__");
@@ -450,8 +470,32 @@ asm volatile ("clr __zero_reg__");
    */
   ch = MCUSR;
   MCUSR = 0;
-  if (ch & (_BV(WDRF) | _BV(BORF) | _BV(PORF)))
-      appStart(ch);
+  if (ch & (_BV(WDRF) | _BV(BORF) | _BV(PORF))){
+      
+	  /* Mizzou Zoumobot Extension
+	   * This is where im hijacking the bootloader to change its behavior
+	   * Please see zoumobot_extensions.c for details about whats going on
+	   */
+	  //Initialize Registers
+	  zoumobot_setup();
+	  //Set Mode
+	  zoumobot_set_mode();
+	  //Jump to program memory if in development mode
+	  if(zoumobot_mode == 1){
+		appStart(ch);
+	  }
+	  //Set up competiton Mode
+	  else if(zoumobot_mode == 0){
+		  //Insert IR start code here
+		  while(true);
+	  }
+	  //start competition
+	  if(zoumobot_mode == 3){
+	  	//Enable Interrupts (ie. IR detectors)
+		sei();
+		//Jump tp program memory
+		 appStart(ch);
+  		}
 
 #if LED_START_FLASHES > 0
   // Set up Timer 1 for timeout counter
