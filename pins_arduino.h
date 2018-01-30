@@ -16,6 +16,12 @@
   Boston, MA  02111-1307  USA
 */
 
+/* Modified by Grant Hilgert for use with Mizzou Zoumobot
+ based off ATMEGA169PA/329PA series MCU
+ */
+
+
+
 #ifndef Pins_Arduino_h
 #define Pins_Arduino_h
 
@@ -220,76 +226,40 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
 	// TIMERS		
 	// -------------------------------------------		
-	NOT_ON_TIMER	, // PE 0 ** 0 ** USART0_RX	
-	NOT_ON_TIMER	, // PE 1 ** 1 ** USART0_TX	
-	TIMER3B	, // PE 4 ** 2 ** PWM2	
-	TIMER3C	, // PE 5 ** 3 ** PWM3	
-	TIMER0B	, // PG 5 ** 4 ** PWM4	
-	TIMER3A	, // PE 3 ** 5 ** PWM5	
-	TIMER4A	, // PH 3 ** 6 ** PWM6	
-	TIMER4B	, // PH 4 ** 7 ** PWM7	
-	TIMER4C	, // PH 5 ** 8 ** PWM8	
-	TIMER2B	, // PH 6 ** 9 ** PWM9	
-	TIMER2A	, // PB 4 ** 10 ** PWM10	
-	TIMER1A	, // PB 5 ** 11 ** PWM11	
-	TIMER1B	, // PB 6 ** 12 ** PWM12	
-	TIMER0A	, // PB 7 ** 13 ** PWM13	
-	NOT_ON_TIMER	, // PJ 1 ** 14 ** USART3_TX	
-	NOT_ON_TIMER	, // PJ 0 ** 15 ** USART3_RX	
-	NOT_ON_TIMER	, // PH 1 ** 16 ** USART2_TX	
-	NOT_ON_TIMER	, // PH 0 ** 17 ** USART2_RX	
-	NOT_ON_TIMER	, // PD 3 ** 18 ** USART1_TX	
-	NOT_ON_TIMER	, // PD 2 ** 19 ** USART1_RX	
-	NOT_ON_TIMER	, // PD 1 ** 20 ** I2C_SDA	
-	NOT_ON_TIMER	, // PD 0 ** 21 ** I2C_SCL	
-	NOT_ON_TIMER	, // PA 0 ** 22 ** D22	
-	NOT_ON_TIMER	, // PA 1 ** 23 ** D23	
-	NOT_ON_TIMER	, // PA 2 ** 24 ** D24	
-	NOT_ON_TIMER	, // PA 3 ** 25 ** D25	
-	NOT_ON_TIMER	, // PA 4 ** 26 ** D26	
-	NOT_ON_TIMER	, // PA 5 ** 27 ** D27	
-	NOT_ON_TIMER	, // PA 6 ** 28 ** D28	
-	NOT_ON_TIMER	, // PA 7 ** 29 ** D29	
-	NOT_ON_TIMER	, // PC 7 ** 30 ** D30	
-	NOT_ON_TIMER	, // PC 6 ** 31 ** D31	
-	NOT_ON_TIMER	, // PC 5 ** 32 ** D32	
-	NOT_ON_TIMER	, // PC 4 ** 33 ** D33	
-	NOT_ON_TIMER	, // PC 3 ** 34 ** D34	
-	NOT_ON_TIMER	, // PC 2 ** 35 ** D35	
-	NOT_ON_TIMER	, // PC 1 ** 36 ** D36	
-	NOT_ON_TIMER	, // PC 0 ** 37 ** D37	
-	NOT_ON_TIMER	, // PD 7 ** 38 ** D38	
-	NOT_ON_TIMER	, // PG 2 ** 39 ** D39	
-	NOT_ON_TIMER	, // PG 1 ** 40 ** D40	
-	NOT_ON_TIMER	, // PG 0 ** 41 ** D41	
-	NOT_ON_TIMER	, // PL 7 ** 42 ** D42	
-	NOT_ON_TIMER	, // PL 6 ** 43 ** D43	
-	TIMER5C	, // PL 5 ** 44 ** D44	
-	TIMER5B	, // PL 4 ** 45 ** D45	
-	TIMER5A	, // PL 3 ** 46 ** D46	
-	NOT_ON_TIMER	, // PL 2 ** 47 ** D47	
-	NOT_ON_TIMER	, // PL 1 ** 48 ** D48	
-	NOT_ON_TIMER	, // PL 0 ** 49 ** D49	
-	NOT_ON_TIMER	, // PB 3 ** 50 ** SPI_MISO	
-	NOT_ON_TIMER	, // PB 2 ** 51 ** SPI_MOSI	
-	NOT_ON_TIMER	, // PB 1 ** 52 ** SPI_SCK	
-	NOT_ON_TIMER	, // PB 0 ** 53 ** SPI_SS	
-	NOT_ON_TIMER	, // PF 0 ** 54 ** A0	
-	NOT_ON_TIMER	, // PF 1 ** 55 ** A1	
-	NOT_ON_TIMER	, // PF 2 ** 56 ** A2	
-	NOT_ON_TIMER	, // PF 3 ** 57 ** A3	
-	NOT_ON_TIMER	, // PF 4 ** 58 ** A4	
-	NOT_ON_TIMER	, // PF 5 ** 59 ** A5	
-	NOT_ON_TIMER	, // PF 6 ** 60 ** A6	
-	NOT_ON_TIMER	, // PF 7 ** 61 ** A7	
-	NOT_ON_TIMER	, // PK 0 ** 62 ** A8	
-	NOT_ON_TIMER	, // PK 1 ** 63 ** A9	
-	NOT_ON_TIMER	, // PK 2 ** 64 ** A10	
-	NOT_ON_TIMER	, // PK 3 ** 65 ** A11	
-	NOT_ON_TIMER	, // PK 4 ** 66 ** A12	
-	NOT_ON_TIMER	, // PK 5 ** 67 ** A13	
-	NOT_ON_TIMER	, // PK 6 ** 68 ** A14	
-	NOT_ON_TIMER	, // PK 7 ** 69 ** A15	
+	NOT_ON_TIMER	, // PA3 D0	
+	NOT_ON_TIMER	, // PA2 D1	
+	NOT_ON_TIMER	, // PA1 D2
+	NOT_ON_TIMER	, // PA0 D3	
+	NOT_ON_TIMER	, // PF7 D4	
+	NOT_ON_TIMER	, // PF6 D5	
+	NOT_ON_TIMER	, // PF0 A0	
+	NOT_ON_TIMER	, // PF1 A1
+	NOT_ON_TIMER	, // PF2 A2	
+	NOT_ON_TIMER	, // PF3 A3	
+	NOT_ON_TIMER	, // PF4 A4	
+	NOT_ON_TIMER	, // PF5 A5	
+	NOT_ON_TIMER	, // PE5 SDA	
+	NOT_ON_TIMER	, // PE4 SCL	
+	NOT_ON_TIMER	, // PA7 AUX LED	
+	TIMER0A	, // PB4 PWM1	
+	TIMER1A	, // PB5 PWM2	
+	TIMER1B	, // PB6 PWM3	
+	TIMER2A	, // PB7 PWM4	
+	NOT_ON_TIMER	, // PG4 BIN1A	
+	NOT_ON_TIMER	, // PG3 BIN1B	
+	NOT_ON_TIMER	, // PD2 BIN2A	
+	NOT_ON_TIMER	, // PD3 BIN2B	
+	NOT_ON_TIMER	, // PD5 BIN3A	
+	NOT_ON_TIMER	, // PD4 BIN3B
+	NOT_ON_TIMER	, // PD6 BIN4A
+	NOT_ON_TIMER	, // PD7 BIN4B	
+	NOT_ON_TIMER	, // PB3 SPI_MOSI	
+	NOT_ON_TIMER	, // PB2 SPI_MISO
+	NOT_ON_TIMER	, // PB1 SPI_SCK	
+	NOT_ON_TIMER	, // PB0 SPI_SS
+	NOT_ON_TIMER	, // PE3 DIP1
+	
+	
 };
 
 #endif
