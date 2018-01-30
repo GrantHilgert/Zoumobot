@@ -1,5 +1,6 @@
 /* Zoumobot Interupt and Boot mode extensions
 Written by Grant Hilgert
+January 2018
 
 This extensions created a development mode and competiton mode for the zoumobot.
 The mode is selected via an external DIP switch.
@@ -9,7 +10,10 @@ In compention mode, code can still be uplaoded over the serial port. However, th
 before execution is allowed to begin
 
 Using guide at https://thewanderingengineer.com/2014/08/11/arduino-pin-change-interrupts/
+and the Atmel ATmega169A/PA/329A/PA/3290A/PA/649A/P/6490A/P datasheet
 
+
+//For 
 DIP0 PCINT 2
 DIP1 PCINT 3
 
@@ -24,13 +28,12 @@ IR1 PCINT 7
 */
 #include <avr/interrupt.h>
 
-
-
 //Temp Variable used for reading DIP0
 uint8_t zoumobot_temp = 0;
+//Varialbe to hold boot mode
 uint8_t zoumobot_dev_mode = 1;
 
-//Setup
+//Performs setup functions for extension
 void zoumobot_setup(void){
   //temporarily disabled all Interupts so we can saftly modify them
   cli():
@@ -42,53 +45,55 @@ void zoumobot_setup(void){
   EIMSK |= 0b00010000;
   //Mask so that PCINT6 & PCINT7 are the only two interupts enabled.
   PCMSK0 |= 0b11000000;
-  
 }
 
+//Enables IR detectors
 void zoumobot_enable(void){
   //Reenable all interupts
   sei();
 }
+
+//Not sure how im going to start the compeition yet
 void zoumobot_start(void){
 
 
 }
-void zoumobot_set_mode(void){
-  
-//Read DIP0 - Mode selection bit
+//Reads DIP switch and sets the boot mode
+void zoumobot_set_mode(void){  
 
-zoumobot_temp = PINE & 0b00000100
-
- //----Competition Mode----
-if(zoumobot_temp = 0){
-  //Set Development led off
-  PORTA &= 0b11011111;
-  //Set Competition led on
-  PORTA |= 0b00010000;
-//Enables interrupts 
- zoumobot_enable();
-//disabled dev moce 
-zoumobot_dev_mode = 0;
-  }
+  /*/Rules: PE2 == HIGH; DIP0 is set to off
+            PE2 == LOW;  DIP0 is set to on
+  /*/
+  //Reads and mask DIP0 - Mode selection bit 
+  zoumobot_temp = PINE & 0b00000100
+    if(zoumobot_temp = 0){
+    /*/----Competition Mode----/*/
+      //First, turn off Development led off
+      PORTA &= 0b11011111;
+      //Now, turn on Competition led 
+      PORTA |= 0b00010000;
+      //Set Development mode bit so the program will wait for IR input later on
+      zoumobot_dev_mode = 0;
+    }
   
-  //----Development Mode----
-else{
-  //Competition led off
-  PORTA &= 0b11101111;
-  //Development LED on
-  PORTA |= 0b00100000
-//enable dev mode
-zoumobot_dev_mode = 1;
+  /*/----Development Mode----/*/
+    else{
+      //Competition led off
+      PORTA &= 0b11101111;
+      //Development LED on
+      PORTA |= 0b00100000
+      //Set Development mode bit so that the IR detectors will be disabled
+      zoumobot_dev_mode = 1;
+
   }
 }
 
-//Post match or Emergency Stop
+//Terminate program
 void zoumobot_shutdown(void){
   //Clear PWM Timers
-  
   //Set leds
-  
-  while(true);
+  //Wait for infinity
+    while(true);
 }
 
 //Interrupt Routine 
