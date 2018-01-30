@@ -181,76 +181,40 @@ const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
 const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
 	// PIN IN PORT		
 	// -------------------------------------------		
-	_BV( 0 )	, // PE 0 ** 0 ** USART0_RX	
-	_BV( 1 )	, // PE 1 ** 1 ** USART0_TX	
-	_BV( 4 )	, // PE 4 ** 2 ** PWM2	
-	_BV( 5 )	, // PE 5 ** 3 ** PWM3	
-	_BV( 5 )	, // PG 5 ** 4 ** PWM4	
-	_BV( 3 )	, // PE 3 ** 5 ** PWM5	
-	_BV( 3 )	, // PH 3 ** 6 ** PWM6	
-	_BV( 4 )	, // PH 4 ** 7 ** PWM7	
-	_BV( 5 )	, // PH 5 ** 8 ** PWM8	
-	_BV( 6 )	, // PH 6 ** 9 ** PWM9	
-	_BV( 4 )	, // PB 4 ** 10 ** PWM10	
-	_BV( 5 )	, // PB 5 ** 11 ** PWM11	
-	_BV( 6 )	, // PB 6 ** 12 ** PWM12	
-	_BV( 7 )	, // PB 7 ** 13 ** PWM13	
-	_BV( 1 )	, // PJ 1 ** 14 ** USART3_TX	
-	_BV( 0 )	, // PJ 0 ** 15 ** USART3_RX	
-	_BV( 1 )	, // PH 1 ** 16 ** USART2_TX	
-	_BV( 0 )	, // PH 0 ** 17 ** USART2_RX	
-	_BV( 3 )	, // PD 3 ** 18 ** USART1_TX	
-	_BV( 2 )	, // PD 2 ** 19 ** USART1_RX	
-	_BV( 1 )	, // PD 1 ** 20 ** I2C_SDA	
-	_BV( 0 )	, // PD 0 ** 21 ** I2C_SCL	
-	_BV( 0 )	, // PA 0 ** 22 ** D22	
-	_BV( 1 )	, // PA 1 ** 23 ** D23	
-	_BV( 2 )	, // PA 2 ** 24 ** D24	
-	_BV( 3 )	, // PA 3 ** 25 ** D25	
-	_BV( 4 )	, // PA 4 ** 26 ** D26	
-	_BV( 5 )	, // PA 5 ** 27 ** D27	
-	_BV( 6 )	, // PA 6 ** 28 ** D28	
-	_BV( 7 )	, // PA 7 ** 29 ** D29	
-	_BV( 7 )	, // PC 7 ** 30 ** D30	
-	_BV( 6 )	, // PC 6 ** 31 ** D31	
-	_BV( 5 )	, // PC 5 ** 32 ** D32	
-	_BV( 4 )	, // PC 4 ** 33 ** D33	
-	_BV( 3 )	, // PC 3 ** 34 ** D34	
-	_BV( 2 )	, // PC 2 ** 35 ** D35	
-	_BV( 1 )	, // PC 1 ** 36 ** D36	
-	_BV( 0 )	, // PC 0 ** 37 ** D37	
-	_BV( 7 )	, // PD 7 ** 38 ** D38	
-	_BV( 2 )	, // PG 2 ** 39 ** D39	
-	_BV( 1 )	, // PG 1 ** 40 ** D40	
-	_BV( 0 )	, // PG 0 ** 41 ** D41	
-	_BV( 7 )	, // PL 7 ** 42 ** D42	
-	_BV( 6 )	, // PL 6 ** 43 ** D43	
-	_BV( 5 )	, // PL 5 ** 44 ** D44	
-	_BV( 4 )	, // PL 4 ** 45 ** D45	
-	_BV( 3 )	, // PL 3 ** 46 ** D46	
-	_BV( 2 )	, // PL 2 ** 47 ** D47	
-	_BV( 1 )	, // PL 1 ** 48 ** D48	
-	_BV( 0 )	, // PL 0 ** 49 ** D49	
-	_BV( 3 )	, // PB 3 ** 50 ** SPI_MISO	
-	_BV( 2 )	, // PB 2 ** 51 ** SPI_MOSI	
-	_BV( 1 )	, // PB 1 ** 52 ** SPI_SCK	
-	_BV( 0 )	, // PB 0 ** 53 ** SPI_SS	
-	_BV( 0 )	, // PF 0 ** 54 ** A0	
-	_BV( 1 )	, // PF 1 ** 55 ** A1	
-	_BV( 2 )	, // PF 2 ** 56 ** A2	
-	_BV( 3 )	, // PF 3 ** 57 ** A3	
-	_BV( 4 )	, // PF 4 ** 58 ** A4	
-	_BV( 5 )	, // PF 5 ** 59 ** A5	
-	_BV( 6 )	, // PF 6 ** 60 ** A6	
-	_BV( 7 )	, // PF 7 ** 61 ** A7	
-	_BV( 0 )	, // PK 0 ** 62 ** A8	
-	_BV( 1 )	, // PK 1 ** 63 ** A9	
-	_BV( 2 )	, // PK 2 ** 64 ** A10	
-	_BV( 3 )	, // PK 3 ** 65 ** A11	
-	_BV( 4 )	, // PK 4 ** 66 ** A12	
-	_BV( 5 )	, // PK 5 ** 67 ** A13	
-	_BV( 6 )	, // PK 6 ** 68 ** A14	
-	_BV( 7 )	, // PK 7 ** 69 ** A15	
+	
+	_BV( 3 )	, // PA3 D0	
+	_BV( 2 )	, // PA2 D1	
+	_BV( 1 )	, // PA1 D2
+	_BV( 0 )	, // PA0 D3	
+	_BV( 7 )	, // PF7 D4	
+	_BV( 6 )	, // PF6 D5	
+	_BV( 0 )	, // PF0 A0	
+	_BV( 1 )	, // PF1 A1
+	_BV( 2 )	, // PF2 A2	
+	_BV( 3 )	, // PF3 A3	
+	_BV( 4 )	, // PF4 A4	
+	_BV( 5 )	, // PF5 A5	
+	_BV( 5 )	, // PE5 SDA	
+	_BV( 4 )	, // PE4 SCL	
+	_BV( 7 )	, // PA7 AUX LED	
+	_BV( 4 )	, // PB4 PWM1	
+	_BV( 5 )	, // PB5 PWM2	
+	_BV( 6 )	, // PB6 PWM3	
+	_BV( 7 )	, // PB7 PWM4	
+	_BV( 4 )	, // PG4 BIN1A	
+	_BV( 3 )	, // PG3 BIN1B	
+	_BV( 2 )	, // PD2 BIN2A	
+	_BV( 3 )	, // PD3 BIN2B	
+	_BV( 5 )	, // PD5 BIN3A	
+	_BV( 4 )	, // PD4 BIN3B
+	_BV( 6 )	, // PD6 BIN4A
+	_BV( 7 )	, // PD7 BIN4B	
+	_BV( 3 )	, // PB3 SPI_MOSI	
+	_BV( 2 )	, // PB2 SPI_MISO
+	_BV( 1 )	, // PB1 SPI_SCK	
+	_BV( 0 )	, // PB0 SPI_SS
+	_BV( 3 )	, // PE3 DIP1
+		
 };
 
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
