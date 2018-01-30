@@ -434,7 +434,7 @@ int main(void) {
   //  r1 contains zero
   //
   // If not, uncomment the following instructions:
-  cli();
+  //cli();
   
 	
 asm volatile ("clr __zero_reg__");
