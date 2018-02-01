@@ -229,8 +229,9 @@
 /* Adds Competition Mode and Development Modes		  */
 /**********************************************************/
 
-#include zoumobot_extension.c
+#include "zoumobot_extension.h"
 
+/*
 //Zoumobot IR Interrupt Routine
 ISR(PCINT0_vect){
   //Insert code check in IR input is valid
@@ -239,7 +240,7 @@ ISR(PCINT0_vect){
   //Shutdowns the zoumobot
   zoumobot_shutdown();
 }
-
+*/
 
 
 
@@ -454,7 +455,7 @@ int main(void) {
   //  r1 contains zero
   //
   // If not, uncomment the following instructions:
-  cli();
+  //cli();
   
 	
 asm volatile ("clr __zero_reg__");
@@ -487,7 +488,7 @@ asm volatile ("clr __zero_reg__");
 	  //Set up competiton Mode
 	  else if(zoumobot_mode == 0){
 		  //Insert IR start code here
-		  while(true);
+		  while(1 == 1);
 	  }
 	  //start competition
 	  if(zoumobot_mode == 3){
@@ -496,6 +497,7 @@ asm volatile ("clr __zero_reg__");
 		//Jump tp program memory
 		 appStart(ch);
   		}
+  	}
 
 #if LED_START_FLASHES > 0
   // Set up Timer 1 for timeout counter

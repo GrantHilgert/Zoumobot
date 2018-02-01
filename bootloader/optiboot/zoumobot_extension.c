@@ -27,11 +27,10 @@ IR1 PCINT 7
 
 */
 #include <avr/interrupt.h>
+#include <inttypes.h>
+#include "zoumobot_extension.h"
 
-//Temp Variable used for reading DIP0
-uint8_t zoumobot_temp = 0;
-//Varialbe to hold boot mode
-uint8_t zoumobot_mode = 1;
+
 
 //Performs setup functions for extension
 void zoumobot_setup(void){
@@ -97,10 +96,12 @@ void zoumobot_shutdown(void){
 }
 
 //Interrupt Routine 
-ISR(PCINT0_vect){
+
+/*ISR(PCINT0_vect){
   //Insert code check in IR input is valid
   
   
   //Shutdowns the zoumobot
   zoumobot_shutdown();
+  */
 }
